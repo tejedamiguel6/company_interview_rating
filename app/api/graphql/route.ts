@@ -8,6 +8,7 @@ import { PrismaClient } from '@prisma/client'
 
 export interface Context {
   prisma: PrismaClient
+  req: any
 }
 
 const prisma = new PrismaClient()
@@ -18,6 +19,12 @@ const server = new ApolloServer({
 })
 
 const handler = startServerAndCreateNextHandler<NextRequest>(server, {
-  context: async (req) => ({ req, prisma }),
+  context: async ({ req }) => {
+    // Ensure the context structure matches the expected format in resolvers
+    return {
+      prisma,
+      req,
+    }
+  },
 })
 export { handler as GET, handler as POST }

@@ -16,7 +16,7 @@ model User {
   email               String               @unique
   name                String
   userName            String               @unique
-  password          String 
+  password            String 
   interviewExperiences InterviewExperience[] 
 }
 
@@ -24,6 +24,12 @@ model Company {
   id                  Int                  @id @default(autoincrement())
   name                String               @unique
   website             String?
+  about               String?
+  city                String?
+  state               String?
+  country             String?
+  zipCode             String?
+  type                String?
   interviewExperiences InterviewExperience[] 
 }
 
