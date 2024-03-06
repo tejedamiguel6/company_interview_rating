@@ -20,7 +20,6 @@ const server = new ApolloServer({
 
 const handler = startServerAndCreateNextHandler<NextRequest>(server, {
   context: async ({ req }) => {
-    // Ensure the context structure matches the expected format in resolvers
     return {
       prisma,
       req,
